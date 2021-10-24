@@ -1,0 +1,18 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+  <h1>Автор:{{ author.first_name }} {{ author.last_name }}</h1>
+  <h5>{{ author.date_of_birth }}-{{ author.date_of_death }}</h5>
+  {% if perms.catalog.can_change %}
+            <a href="{% url 'author_update' author.id %}">Обновить</a>
+            <a href="{% url 'author_delete' author.id %}">Удалить автора</a>
+  {% endif %}
+  <div style="margin-left:20px;margin-top:20px">
+    <h4>Книги</h4>
+    {% for book in author.book_set.all %}
+    <hr>
+    <p><a href={% url 'book-detail' book.id %}>{{book.title}}</a></p>
+    <p>{{book.summary}}</p>
+    {% endfor %}
+  </div>
+{% endblock %}

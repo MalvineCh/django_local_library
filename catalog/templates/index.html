@@ -1,0 +1,22 @@
+{% extends "base_generic.html" %}
+
+{% block title %}<title>Домашняя страничка локи</title>{% endblock %}
+{% block content %}
+<h1>Домашняя страница Локальной библиотеки</h1>
+
+  <p>Добро пожаловать в <em>Локальную библиотеку</em></p>
+
+<h2>Динамический контент</h2>
+
+  <p>В библиотеке имеется следующее количество записей:</p>
+  <ul>
+    <li><strong>Книги:</strong> {{ num_books }}</li>
+    <li><strong>Копии:</strong> {{ num_instances }}</li>
+    <li><strong>Доступные копии:</strong> {{ num_instances_available }}</li>
+    <li><strong>Авторы:</strong> {{ num_authors }}</li>
+    <li><strong>Жанры:</strong> {{ num_genres }}</li>
+    <li><strong>Книги про войну:</strong> {{ num_books_count_war }}</li>
+  </ul>
+  <p>Вы посетили эту страничку {{ num_visits }}{% if num_visits == 2 %} раза{% else %} раз{% endif %}.</p>
+
+{% endblock %}

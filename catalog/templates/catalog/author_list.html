@@ -1,0 +1,21 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+    <h1>Список авторов</h1>
+    {% if perms.catalog.can_change %}
+            <li><a href="{% url 'author_create' %}">Добавить автора</a></li>
+    {% endif %}
+    {% if author_list %}
+    <ul>
+      {% for author in author_list %}
+      <li>
+        <a href="{{ author.get_absolute_url }}">{{ author.first_name }} {{ author.last_name }}
+            ({{ author.date_of_birth }}-{{ author.date_of_death }})</a>
+      </li>
+      {% endfor %}
+
+    </ul>
+    {% else %}
+      <p>Авторы пока не добавлены.</p>
+    {% endif %} 
+{% endblock %}
